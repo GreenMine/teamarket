@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\ShopCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 /**
@@ -43,9 +44,8 @@ class ShopItemFactory extends Factory
 		$teaType = self::randElement(self::TYPE_OF_TEA);
 		$itemName = $teaType . ' Tea ' . $this->faker->country();
 		
-		/** @var ShopCategory $randCategory */
 		$randCategory = self::randElement($this->categories);
-		
+	
         return [
 			'category_id' => $randCategory['id'],
 			'slug' => Str::slug($itemName),
