@@ -18,7 +18,7 @@ class RelationRepository extends CoreRepository {
 	 * @param string $path
 	 * @return int|false
 	 */
-	public function resolveIdentifierBySlug(string $path) {
+	public function resolveBySlug(string $path) {
 		$slugs = explode('/', $path);
 		
 		$iterator = collect($slugs)->getIterator();
