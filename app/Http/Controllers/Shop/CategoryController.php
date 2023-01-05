@@ -9,6 +9,6 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
 	public function show(ShopCategory $category) {
-		return view('app.shop.category', compact($category));
+		return view('app.shop.category');
 	}
 }

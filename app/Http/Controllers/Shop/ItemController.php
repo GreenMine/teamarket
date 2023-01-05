@@ -9,6 +9,6 @@ use Illuminate\Http\Request;
 class ItemController extends Controller
 {
 	public function show(ShopItem $item) {
-		return view('app.shop.item', compact($item));
+		return view('app.shop.item')->with('item', $item);
 	}
 }

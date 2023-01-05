@@ -21,7 +21,7 @@ class ShopController extends Controller
 			abort(404);
 		
 		list($model, $controller) = $this->findRelationParent($relationId);
-		app($controller)->show($model);
+		return app($controller)->show($model);
 	}
 	
 	private function findRelationParent(int $relationId) {

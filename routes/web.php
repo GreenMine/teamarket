@@ -17,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'show']);
 
-
 Route::get('/shop/{slug?}', [ShopController::class, 'resolve'])
-	->where('slug', '.*');
+	->where('slug', '.*')
+	->name('shop');
