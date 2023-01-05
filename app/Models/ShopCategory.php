@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShopCategory extends Model
 {
+	const ROOT_PARENT_ID = 0;
+	
     use HasFactory;
 	
 	public function relation() {
-		return $this->belongsTo(Identifier::class);
+		return $this->belongsTo(Relation::class);
 	}
 }

@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('identifiers', function (Blueprint $table) {
+        Schema::create('relations', function (Blueprint $table) {
 			$table->id();
 			$table->bigInteger('parent_id')->unsigned()->default(0);
 			$table->string('slug');
 			
-			$primary = ['parent_id', 'slug'];
-			$table->unique($primary);
+			$table->unique(['parent_id', 'slug']);
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('identifiers');
+        Schema::dropIfExists('relations');
     }
 };

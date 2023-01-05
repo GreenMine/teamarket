@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ShopItem extends Model
 {
     use HasFactory;
+	
 	public function relation() {
-		return $this->belongsTo(Identifier::class);
+		return $this->belongsTo(Relation::class);
 	}
 }

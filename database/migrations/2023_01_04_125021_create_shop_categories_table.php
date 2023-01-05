@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('shop_categories', function (Blueprint $table) {
 			$table->id();
-			$table->foreignIdFor(\App\Models\Identifier::class, 'relation_id')->constrained('identifiers');
+			$table->foreignIdFor(\App\Models\Relation::class, 'relation_id')->constrained('relations');
 	
 			$table->string('title');
 	

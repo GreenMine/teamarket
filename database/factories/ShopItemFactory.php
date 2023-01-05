@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Identifier;
+use App\Models\Relation;
 use App\Models\ShopCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
@@ -45,11 +45,11 @@ class ShopItemFactory extends Factory
 		$teaType = self::randElement(self::TYPE_OF_TEA);
 		$itemName = $teaType . ' Tea ' . $this->faker->country();
 		
-		$randCategory = self::randElement($this->categories);
+		$randCategory = ShopCategory::find(self::randElement($this->categories)['id']);
 	
         return [
-			'relation_id' => Identifier::create([
-				'parent_id' => $randCategory['id'],
+			'relation_id' => Relation::create([
+				'parent_id' => $randCategory->relation_id,
 				'slug' => Str::slug($itemName)
 			]),
 			'title' => $itemName,
