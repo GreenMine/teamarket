@@ -18,18 +18,18 @@
             <div class="header__burger-container">
                 <button class="header__burger" type="button">
                     <svg width="20" height="22">
-                        <use xlink:href="img/sprite_auto.svg#icon-burger"></use>
+                        <use xlink:href="/img/sprite_auto.svg#icon-burger"></use>
                     </svg>
                 </button>
                 <button class="header__cross hidden" type="button">
                     <svg width="22" height="22">
-                        <use xlink:href="img/sprite_auto.svg#icon-cross"></use>
+                        <use xlink:href="/img/sprite_auto.svg#icon-cross"></use>
                     </svg>
                 </button>
                 <nav class="nav hidden">
                     <button class="nav__cross" type="button">
                         <svg width="30" height="30">
-                            <use xlink:href="img/sprite_auto.svg#icon-cross"></use>
+                            <use xlink:href="/img/sprite_auto.svg#icon-cross"></use>
                         </svg>
                         <span>Меню</span>
                     </button>
@@ -56,16 +56,16 @@
         </div>
         <a class="header__logo header__logo--index" href="/" title="Две вилки">
             <svg width="77" height="88">
-                <use xlink:href="img/sprite_auto.svg#icon-logo"></use>
+                <use xlink:href="/img/sprite_auto.svg#icon-logo"></use>
             </svg>
         </a>
         <div class="header__right">
             <a class="header__order" href="#" title="Ваш заказ">
                 <svg class="header__order-svg" width="63" height="56">
-                    <use xlink:href="img/sprite_auto.svg#icon-order"></use>
+                    <use xlink:href="/img/sprite_auto.svg#icon-order"></use>
                 </svg>
                 <svg class="header__order-svg header__order-svg-hover" width="72" height="67">
-                    <use xlink:href="img/sprite_auto.svg#icon-order-opened"></use>
+                    <use xlink:href="/img/sprite_auto.svg#icon-order-opened"></use>
                 </svg>
                 <div class="header__order-text">Ваш заказ <span>0 руб.</span></div>
             </a>

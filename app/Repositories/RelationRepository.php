@@ -43,9 +43,10 @@ class RelationRepository extends CoreRepository
 		$next_slug = $iterator->current();
 		$iterator->next();
 		
-		$identifier = Relation::where('parent_id', $parent_id)
-			->where('slug', $next_slug)
-			->first();
+		$identifier = $this->startConditions()
+							->where('parent_id', $parent_id)
+							->where('slug', $next_slug)
+							->first();
 		if (!$identifier instanceof Relation) {
 			return false;
 		}
