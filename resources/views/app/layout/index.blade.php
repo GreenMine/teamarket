@@ -53,9 +53,8 @@
                     </div>
                 </nav>
             </div>
-            <a class="header__tel" href="#" title="+7800000000">+7(800)000 00 00</a>
         </div>
-        <a class="header__logo header__logo--index" href="#" title="Две вилки">
+        <a class="header__logo header__logo--index" href="/" title="Две вилки">
             <svg width="77" height="88">
                 <use xlink:href="img/sprite_auto.svg#icon-logo"></use>
             </svg>

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Identifier;
 use App\Models\ShopCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
@@ -47,8 +48,10 @@ class ShopItemFactory extends Factory
 		$randCategory = self::randElement($this->categories);
 	
         return [
-			'category_id' => $randCategory['id'],
-			'slug' => Str::slug($itemName),
+			'relation_id' => Identifier::create([
+				'parent_id' => $randCategory['id'],
+				'slug' => Str::slug($itemName)
+			]),
 			'title' => $itemName,
 			'description' => $this->faker->realText(mt_rand(200, 1000)),
 			'price' => mt_rand(1, 999) * pow(10, mt_rand(1, 4))

@@ -5,10 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ShopItem extends Model
+class Identifier extends Model
 {
     use HasFactory;
-	public function relation() {
-		return $this->belongsTo(Identifier::class);
-	}
+	public $timestamps = false;
 }

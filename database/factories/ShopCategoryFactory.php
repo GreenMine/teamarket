@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Identifier;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -19,7 +20,10 @@ class ShopCategoryFactory extends Factory
     {
 		$categoryName = $this->faker->company();
 		return [
-			'slug' => Str::slug($categoryName),
+			'relation_id' => Identifier::create([
+				'parent_id' => 0,
+				'slug' => Str::slug($categoryName)
+			]),
 			'title' => $categoryName
 		];
 	}

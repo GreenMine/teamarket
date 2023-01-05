@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ShopCategory extends Model
 {
     use HasFactory;
+	
+	public function relation() {
+		return $this->belongsTo(Identifier::class);
+	}
 }

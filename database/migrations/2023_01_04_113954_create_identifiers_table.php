@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\ShopCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shop_items', function (Blueprint $table) {
+        Schema::create('identifiers', function (Blueprint $table) {
 			$table->id();
-			$table->foreignIdFor(\App\Models\Identifier::class, 'relation_id')->constrained('identifiers');
-	
-			$table->string('title');
-			$table->text('description')->nullable();
-			$table->integer('price')->unsigned();
-	
-			$table->timestamps();
-			$table->softDeletes();
+			$table->bigInteger('parent_id')->unsigned()->default(0);
+			$table->string('slug');
+			
+			$primary = ['parent_id', 'slug'];
+			$table->unique($primary);
         });
     }
 
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_items');
+        Schema::dropIfExists('identifiers');
     }
 };
