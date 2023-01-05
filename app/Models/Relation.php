@@ -14,26 +14,29 @@ use Illuminate\Support\LazyCollection;
  */
 class Relation extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	
 	public $timestamps = false;
 	
-	public function getParentsIterator($includeSelf = false) : LazyCollection {
-		return LazyCollection::make(function() use ($includeSelf) {
+	public function getParentsIterator($includeSelf = false): LazyCollection
+	{
+		return LazyCollection::make(function () use ($includeSelf) {
 			$current = $this;
-			if($includeSelf) yield $current;
+			if ($includeSelf) yield $current;
 			
-			while($current->parent_id != 0) {
+			while ($current->parent_id != 0) {
 				$current = Relation::find($current->parent_id);
 				yield $current;
 			}
 		});
 	}
 	
-	public function getPath() : string {
+	public function getPath(): string
+	{
 		return $this->getParentsIterator(true)
-					->map(fn($p) => $p->slug)
-					->reverse()
-					->implode('/');
+			->map(fn($p) => $p->slug)
+			->reverse()
+			->implode('/');
 	}
 	
 	public function __toString()

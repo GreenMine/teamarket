@@ -20,13 +20,15 @@ class ShopCategory extends Model
 {
 	const ROOT_PARENT_ID = 0;
 	
-    use HasFactory;
+	use HasFactory;
 	
-	public function relation() {
+	public function relation()
+	{
 		return $this->belongsTo(Relation::class);
 	}
 	
-	public function getRouteKey() {
+	public function getRouteKey()
+	{
 		return $this->relation->getPath();
 	}
 }

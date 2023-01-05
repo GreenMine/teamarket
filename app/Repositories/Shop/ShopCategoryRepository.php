@@ -4,9 +4,11 @@ namespace App\Repositories\Shop;
 
 use App\Models\ShopCategory;
 
-class ShopCategoryRepository extends ShopRepository {
+class ShopCategoryRepository extends ShopRepository
+{
 	
-	protected function getModelClass() {
+	protected function getModelClass()
+	{
 		return ShopCategory::class;
 	}
 }

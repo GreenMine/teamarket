@@ -4,11 +4,12 @@ namespace App\Repositories;
 
 use App\Models\Relation;
 use App\Models\ShopCategory;
-use ArrayObject;
 
-class RelationRepository extends CoreRepository {
+class RelationRepository extends CoreRepository
+{
 	
-	protected function getModelClass() {
+	protected function getModelClass()
+	{
 		return Relation::class;
 	}
 	
@@ -18,7 +19,8 @@ class RelationRepository extends CoreRepository {
 	 * @param string $path
 	 * @return int|false
 	 */
-	public function resolveBySlug(string $path) {
+	public function resolveBySlug(string $path)
+	{
 		$slugs = explode('/', $path);
 		
 		$iterator = collect($slugs)->getIterator();
@@ -32,8 +34,9 @@ class RelationRepository extends CoreRepository {
 	 * @param \ArrayIterator $iterator
 	 * @return int|false
 	 */
-	private function recursiveFindBySlug(int $parent_id, \ArrayIterator $iterator) {
-		if(!$iterator->valid()) {
+	private function recursiveFindBySlug(int $parent_id, \ArrayIterator $iterator)
+	{
+		if (!$iterator->valid()) {
 			return $parent_id;
 		}
 		
@@ -41,9 +44,9 @@ class RelationRepository extends CoreRepository {
 		$iterator->next();
 		
 		$identifier = Relation::where('parent_id', $parent_id)
-							->where('slug', $next_slug)
-							->first();
-		if(!$identifier instanceof Relation) {
+			->where('slug', $next_slug)
+			->first();
+		if (!$identifier instanceof Relation) {
 			return false;
 		}
 		
