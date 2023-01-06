@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shop_items', function (Blueprint $table) {
+        Schema::create('shop_products', function (Blueprint $table) {
 			$table->id();
 			$table->foreignIdFor(\App\Models\Shop\Relation::class, 'relation_id')->constrained('relations');
 	
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_items');
+        Schema::dropIfExists('shop_products');
     }
 };

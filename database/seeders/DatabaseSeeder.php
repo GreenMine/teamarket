@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 		 
 		 $this->create_root_category();
 		 \App\Models\Shop\Category::factory(10)->create();
-		 \App\Models\Shop\Item::factory(100)->create();
+		 \App\Models\Shop\Product::factory(100)->create();
     }
 	
 	const ROOT_CATEGORY_NAME = 'Главная категория';

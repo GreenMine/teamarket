@@ -2,15 +2,15 @@
 
 namespace App\Repositories\Shop;
 
-use App\Models\Shop\Item;
+use App\Models\Shop\Product;
 use Illuminate\Database\Eloquent\Builder;
 
-class ItemRepository extends CoreRepository
+class ProductRepository extends CoreRepository
 {
 	
 	protected function getModelClass()
 	{
-		return Item::class;
+		return Product::class;
 	}
 	
 	public function getCategoryItems(int $categoryId) {

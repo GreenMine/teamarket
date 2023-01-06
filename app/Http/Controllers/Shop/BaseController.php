@@ -9,7 +9,7 @@ class BaseController extends Controller
 {
 	const CONTROLLERS_RELATION = [
 		\App\Models\Shop\Category::class => CategoryController::class,
-		\App\Models\Shop\Item::class => ItemController::class
+		\App\Models\Shop\Product::class => ProductController::class
 	];
 	
 	public function resolve(string $path = '')

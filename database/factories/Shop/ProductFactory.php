@@ -9,9 +9,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shop\Item>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shop\Product>
  */
-class ItemFactory extends Factory
+class ProductFactory extends Factory
 {
 	const TYPE_OF_TEA = [
 		'Black',

@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Shop\Category;
-use App\Repositories\Shop\ItemRepository;
+use App\Repositories\Shop\ProductRepository;
 
 class CategoryController extends Controller
 {
 	
 	public function __construct(
-		private ItemRepository $itemRepository
+		private ProductRepository $itemRepository
 	) {}
 	
 	public function show(Category $category)

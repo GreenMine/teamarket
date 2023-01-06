@@ -15,9 +15,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property Carbon $updated_at
  * @property Carbon $deleted_at
  */
-class Item extends CoreModel
+class Product extends CoreModel
 {
 	use HasFactory;
 	
-	protected $table = 'shop_items';
+	protected $table = 'shop_products';
 }
