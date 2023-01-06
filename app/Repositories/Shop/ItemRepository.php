@@ -2,20 +2,20 @@
 
 namespace App\Repositories\Shop;
 
-use App\Models\ShopItem;
+use App\Models\Shop\Item;
 use Illuminate\Database\Eloquent\Builder;
 
-class ShopItemRepository extends ShopRepository
+class ItemRepository extends CoreRepository
 {
 	
 	protected function getModelClass()
 	{
-		return ShopItem::class;
+		return Item::class;
 	}
 	
 	public function getCategoryItems(int $categoryId) {
 		return $this->startConditions()->whereHas('relation', function(Builder $query) use ($categoryId) {
 			$query->where('parent_id', $categoryId);
-		})->get();
+		})->with(['relation'])->get();
 	}
 }

@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Relation;
-use App\Models\ShopCategory;
+use App\Models\Shop\Relation;
+use App\Models\Shop\Category;
 
 class RelationRepository extends CoreRepository
 {
@@ -24,7 +24,7 @@ class RelationRepository extends CoreRepository
 		$slugs = explode('/', $path);
 		
 		$iterator = collect($slugs)->getIterator();
-		return $this->recursiveFindBySlug(ShopCategory::ROOT_PARENT_ID, $iterator);
+		return $this->recursiveFindBySlug(Category::ROOT_PARENT_ID, $iterator);
 	}
 	
 	/**

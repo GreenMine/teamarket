@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Shop\ShopCategoryRepository;
+use App\Repositories\Shop\CategoryRepository;
 
 class HomeController extends Controller
 {
 	public function __construct(
-		private ShopCategoryRepository $categoryRepository
+		private CategoryRepository $categoryRepository
 	) {}
 	
 	public function show()

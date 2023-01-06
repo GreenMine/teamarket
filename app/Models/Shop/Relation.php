@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Shop;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -37,10 +37,5 @@ class Relation extends Model
 			->map(fn($p) => $p->slug)
 			->reverse()
 			->implode('/');
-	}
-	
-	public function __toString()
-	{
-		return $this->getPath();
 	}
 }

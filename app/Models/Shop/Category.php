@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Shop;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  *
@@ -16,19 +15,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $updated_at
  * @property Carbon $deleted_at
  */
-class ShopCategory extends Model
+class Category extends CoreModel
 {
-	const ROOT_PARENT_ID = 0;
-	
 	use HasFactory;
 	
-	public function relation()
-	{
-		return $this->belongsTo(Relation::class);
-	}
+	protected $table = 'shop_categories';
 	
-	public function getRouteKey()
-	{
-		return $this->relation->getPath();
-	}
+	const ROOT_PARENT_ID = 0;//FIXME: move to Repository
+	
 }

@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Repositories\RelationRepository;
 
-class ShopController extends Controller
+class BaseController extends Controller
 {
 	const CONTROLLERS_RELATION = [
-		\App\Models\ShopCategory::class => CategoryController::class,
-		\App\Models\ShopItem::class => ItemController::class
+		\App\Models\Shop\Category::class => CategoryController::class,
+		\App\Models\Shop\Item::class => ItemController::class
 	];
 	
 	public function resolve(string $path = '')

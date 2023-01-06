@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Shop\ShopController;
+use App\Http\Controllers\Shop\BaseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'show']);
 
-Route::get('/shop/{slug?}', [ShopController::class, 'resolve'])
+Route::get('/shop/{slug?}', [BaseController::class, 'resolve'])
 	->where('slug', '.*')
 	->name('shop');

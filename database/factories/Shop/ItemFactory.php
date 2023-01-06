@@ -1,18 +1,17 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Shop;
 
-use App\Models\Relation;
-use App\Models\ShopCategory;
+use App\Models\Shop\Category;
+use App\Models\Shop\Relation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ShopItem>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shop\Item>
  */
-class ShopItemFactory extends Factory
+class ItemFactory extends Factory
 {
 	const TYPE_OF_TEA = [
 		'Black',
@@ -25,14 +24,14 @@ class ShopItemFactory extends Factory
 	];
 	
 	/**
-	 * @var ShopCategory[] $categories
+	 * @var Category[] $categories
 	 */
 	private array $categories;
 	
 	public function __construct($count = null, ?Collection $states = null, ?Collection $has = null, ?Collection $for = null, ?Collection $afterMaking = null, ?Collection $afterCreating = null, $connection = null, ?Collection $recycle = null)
 	{
 		parent::__construct($count, $states, $has, $for, $afterMaking, $afterCreating, $connection, $recycle);
-		$this->categories = ShopCategory::all()->toArray();
+		$this->categories = Category::all()->toArray();
 	}
 	
 	/**
@@ -45,7 +44,7 @@ class ShopItemFactory extends Factory
 		$teaType = self::randElement(self::TYPE_OF_TEA);
 		$itemName = $teaType . ' Tea ' . $this->faker->country();
 		
-		$randCategory = ShopCategory::find(self::randElement($this->categories)['id']);
+		$randCategory = Category::find(self::randElement($this->categories)['id']);
 	
         return [
 			'relation_id' => Relation::create([

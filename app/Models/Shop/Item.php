@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Shop;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  *
  * @property integer $id
- * @property Relation $relation
  * @property string $title
  * @property string $description
  * @property integer $price
@@ -17,17 +15,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $updated_at
  * @property Carbon $deleted_at
  */
-class ShopItem extends Model
+class Item extends CoreModel
 {
 	use HasFactory;
 	
-	public function relation()
-	{
-		return $this->belongsTo(Relation::class);
-	}
-	
-	public function getRouteKey()
-	{
-		return $this->relation->getPath();
-	}
+	protected $table = 'shop_items';
 }

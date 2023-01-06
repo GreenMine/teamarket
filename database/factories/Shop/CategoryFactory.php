@@ -1,15 +1,15 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Shop;
 
-use App\Models\Relation;
+use App\Models\Shop\Relation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ShopCategory>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shop\Category>
  */
-class ShopCategoryFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
