@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Shop\BaseController;
+use \App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::get('/', [HomeController::class, 'show']);
 Route::get('/shop/{slug?}', [BaseController::class, 'resolve'])
 	->where('slug', '.*')
 	->name('shop');
+
+Route::get('/basket/', [BasketController::class, 'index']);

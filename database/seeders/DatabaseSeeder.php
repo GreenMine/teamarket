@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Shop\Relation;
 use App\Models\Shop\Category;
 use Illuminate\Database\Seeder;

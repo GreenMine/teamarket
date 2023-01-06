@@ -2,6 +2,7 @@
 
 namespace App\Models\Shop;
 
+use App\Basket\Interfaces\Basketable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -15,9 +16,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property Carbon $updated_at
  * @property Carbon $deleted_at
  */
-class Product extends CoreModel
+class Product extends CoreModel implements Basketable
 {
 	use HasFactory;
 	
 	protected $table = 'shop_products';
+	
+	public function getPrice() {
+		return $this->price;
+	}
+	
+	public function getName() {
+		return $this->title;
+	}
 }
