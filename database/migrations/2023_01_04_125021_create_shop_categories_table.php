@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('shop_categories', function (Blueprint $table) {
 			$table->id();
-			$table->foreignIdFor(\App\Models\Shop\Relation::class, 'relation_id')->constrained('relations');
+			$table->foreignIdFor(\App\Models\Shop\Relation::class, 'relation_id')
+				->constrained('relations')
+				->cascadeOnDelete();
 	
 			$table->string('title');
 	
