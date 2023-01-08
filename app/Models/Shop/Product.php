@@ -2,7 +2,7 @@
 
 namespace App\Models\Shop;
 
-use App\Basket\Interfaces\Basketable;
+use App\Interfaces\Basketable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

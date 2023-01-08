@@ -3,6 +3,7 @@
 namespace App\Rules;
 
 use App\Models\Basket;
+use App\Repositories\BasketRepository;
 use Illuminate\Contracts\Validation\Rule;
 
 class BasketExistsRule implements Rule
@@ -24,10 +25,9 @@ class BasketExistsRule implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
-    {
-		/** @var Basket $basket */
-		$basket = app(Basket::class);
+    public function passes($attribute, $value) {
+		/** @var BasketRepository $basket */
+		$basket = app(BasketRepository::class);
 		return $basket->exists($value);
     }
 
@@ -36,8 +36,7 @@ class BasketExistsRule implements Rule
      *
      * @return string
      */
-    public function message()
-    {
+    public function message() {
         return 'Item doesn\'t exists in your basket';
     }
 }

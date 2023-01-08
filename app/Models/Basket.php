@@ -1,8 +1,9 @@
 <?php
 namespace App\Models;
 
-use App\Basket\Models\Basket as BasketModel;
+use App\Interfaces\BasketInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $id
  * @property Collection<BasketItem> $items
  */
-class Basket extends BasketModel
+class Basket extends Model implements BasketInterface
 {
 	public function items(): HasMany
 	{

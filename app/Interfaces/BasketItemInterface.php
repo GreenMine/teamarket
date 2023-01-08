@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Basket\Interfaces;
+namespace App\Interfaces;
 
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
