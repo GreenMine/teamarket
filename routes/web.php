@@ -22,4 +22,10 @@ Route::get('/shop/{slug?}', [BaseController::class, 'resolve'])
 	->where('slug', '.*')
 	->name('shop');
 
-Route::get('/basket/', [BasketController::class, 'index']);
+Route::prefix('basket')->controller(BasketController::class)->group(function() {
+	Route::get('/', 'index')
+		->name('basket');
+	Route::post('/{product}', 'add')->name('basket.add');
+	Route::delete('/{basketItemId}', 'remove')->name('basket.remove');
+	Route::patch('/{basketItemId}', 'update')->name('basket.update');
+});

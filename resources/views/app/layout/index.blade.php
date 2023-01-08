@@ -60,7 +60,7 @@
             </svg>
         </a>
         <div class="header__right">
-            <a class="header__order" href="#" title="Ваш заказ">
+            <a class="header__order" href="{{ route('basket') }}" title="Ваш заказ">
                 <svg class="header__order-svg" width="63" height="56">
                     <use xlink:href="/img/sprite_auto.svg#icon-order"></use>
                 </svg>
@@ -73,6 +73,31 @@
     </div>
 </header>
 <main class="main">
+    <div class="container">
+        @if ($errors->any())
+            <style>
+                .alert {
+                    position: relative;
+                    padding: .75rem 1.25rem;
+                    margin-bottom: 1rem;
+                    border: 1px solid transparent;
+                    border-radius: .25rem;
+                }
+                .alert-danger {
+                    color: #721c24;
+                    background-color: #f8d7da;
+                    border-color: #f5c6cb;
+                }
+            </style>
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
     @yield('content')
 </main>
 </body>

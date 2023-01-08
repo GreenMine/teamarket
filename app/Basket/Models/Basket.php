@@ -6,6 +6,7 @@ use App\Basket\Interfaces\Basketable;
 use App\Basket\Interfaces\BasketInterface;
 use App\Basket\Interfaces\BasketItemInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 
 abstract class Basket extends Model implements BasketInterface
 {
@@ -14,11 +15,11 @@ abstract class Basket extends Model implements BasketInterface
     public static function getCurrent(): BasketInterface
     {
         $basket = static::find(session(static::BASKET_SESSION_KEY));
-
+	
         if (!$basket) {
             $basket = new static();
             $basket->save();
-            session()->put(static::BASKET_SESSION_KEY, $basket->id);
+			Session::put(static::BASKET_SESSION_KEY, $basket->id);
         }
 
         return $basket;
@@ -54,13 +55,21 @@ abstract class Basket extends Model implements BasketInterface
         $item->basketable_id = $basketable->getKey();
         $item->save();
 
-//        unset($this->items);
+        unset($this->items);
     }
 	
 	public function get(int $id) : BasketItemInterface|null {
 		return $this->items
 					->where('id', $id)
 					->first();
+	}
+	
+	public function remove(int $id) {
+		return $this->get($id)->delete();
+	}
+	
+	public function exists(int $id) : bool {
+		return $this->get($id) instanceof BasketItemInterface;
 	}
 	
 	public function getTotalPrice()

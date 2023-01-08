@@ -1,23 +1,5 @@
 'use strict';
 (function() {
-  var header = document.querySelector('.header');
-  var main = document.querySelector('.main');
-  if (!header.classList.contains('.header--index') && header) {
-    var sticky = header.offsetHeight;
-    window.addEventListener('scroll', function() {
-
-      if (window.pageYOffset > sticky) {
-        header.classList.add("header--scroll");
-        main.style.paddingTop = sticky + 'px';
-      } else {
-        header.classList.remove("header--scroll");
-        main.style.paddingTop = '0';
-      }
-    });
-  }
-})();
-'use strict';
-(function() {
   let yMap;
   const mapElement = document.querySelector('[data-map]');
   if (mapElement) {
