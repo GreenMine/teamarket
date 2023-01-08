@@ -4,6 +4,20 @@
 @section('content')
     <h1 class="title">— {{ $category->title }} —</h1>
     <div class="catalog container">
+        @if(!$categories->isEmpty())
+            <div class="menu menu--index container">
+                @php /** @var \App\Models\Shop\Category $category */ @endphp
+                @foreach($categories as $category)
+                    <a class="menu__item" href="{{ $category->link }}" title="Холодные закуски и салаты">
+                        <svg width="64" height="61">
+                            <use xlink:href="img/sprite_auto.svg#icon-soup"></use>
+                        </svg>
+                        <span>{{ $category->title }}</span>
+                    </a>
+                @endforeach
+            </div>
+        @endif
+
         @php /** @var \App\Models\Shop\Product $product */ @endphp
         @foreach($products as $product)
             <div class="catalog__item">

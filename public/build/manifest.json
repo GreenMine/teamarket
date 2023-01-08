@@ -1,0 +1,26 @@
+{
+  "resources/fonts/montserrat-regular.woff2": {
+    "file": "assets/montserrat-regular-4ed993c7.js",
+    "src": "resources/fonts/montserrat-regular.woff2",
+    "isEntry": true
+  },
+  "resources/fonts/montserrat-regular.woff": {
+    "file": "assets/montserrat-regular-215a175c.woff",
+    "src": "resources/fonts/montserrat-regular.woff"
+  },
+  "resources/css/style.min.css": {
+    "file": "assets/style.min-2a17c032.css",
+    "src": "resources/css/style.min.css",
+    "isEntry": true
+  },
+  "resources/js/main.js": {
+    "file": "assets/main-e64ea7e5.js",
+    "src": "resources/js/main.js",
+    "isEntry": true
+  },
+  "resources/js/vendors.js": {
+    "file": "assets/vendors-b888a8a7.js",
+    "src": "resources/js/vendors.js",
+    "isEntry": true
+  }
+}

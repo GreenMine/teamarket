@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 class CategoryRepository extends CoreRepository
 {
 	
-	protected function getModelClass()
-	{
+	protected function getModelClass() {
 		return Category::class;
 	}
 	
@@ -19,6 +18,6 @@ class CategoryRepository extends CoreRepository
 			if($categoryId == Category::ROOT_PARENT_ID) {
 				$query->where('id', '!=', Category::ROOT_PARENT_ID);
 			}
-		})->get();
+		})->with(['relation'])->get();
 	}
 }
