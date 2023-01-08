@@ -5,7 +5,7 @@ namespace App\Http\Requests\Basket;
 use App\Rules\BasketExistsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,8 @@ class DeleteRequest extends FormRequest
      */
     public function rules() {
         return [
-            'basket_item_id' => [new BasketExistsRule()]
+			'quantity' => 'required|integer|min:1',
+			'basket_item_id' => [new BasketExistsRule()]
         ];
     }
 }

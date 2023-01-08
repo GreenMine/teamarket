@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Basket\AddRequest;
-use App\Http\Requests\Basket\DeleteRequest;
-use App\Models\BasketItem;
+use App\Http\Requests\Basket\RemoveRequest;
+use App\Http\Requests\Basket\UpdateRequest;
 use App\Models\Shop\Product;
 use App\Repositories\BasketRepository;
 
@@ -17,6 +17,7 @@ class BasketController extends Controller
 	public function index() {
 		$items = $this->basketRepository->getList();
 		$totalPrice = $this->basketRepository->getTotalPrice();
+		
 		return view('app.basket', ['totalPrice' => $totalPrice])->with('items', $items);
 	}
 	
@@ -27,13 +28,16 @@ class BasketController extends Controller
 		return redirect()->route('basket');
 	}
 	
-	public function remove(DeleteRequest $_, int $basket_item_id) {
+	public function remove(RemoveRequest $_, int $basket_item_id) {
 		$this->basketRepository->remove($basket_item_id);
 		
-		return redirect()->back();
+		return redirect()->route('basket');
 	}
 	
-	public function update(BasketItem $item) {
-	
+	public function update(UpdateRequest $request, int $basket_item_id) {
+		$data = $request->all();
+		$this->basketRepository->update($basket_item_id, $data);
+		
+		return redirect()->route('basket');
 	}
 }

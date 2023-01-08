@@ -7,12 +7,14 @@
             <div class="catalog__item-order">
                 <div class="catalog__item">
                     <div class="catalog__bottom">
-                        <div class="catalog__bottom-left"><a class="catalog__title" href="#" title="Мясное ассорти">{{ $item->basketable->title }}</a>
-                            <div class="catalog__number count">
-                                <button class="count__more count__button" type="button" onclick="this.nextElementSibling.stepUp()">+</button>
-                                <input class="count__number" type="number" value="{{ $item->quantity }}" name="basic" min="0" max="100" readonly="">
-                                <button class="count__less count__button" type="button" onclick="this.previousElementSibling.stepDown()">-</button>
-                            </div>
+                        <div class="catalog__bottom-left"><a class="catalog__title" href="{{ $item->basketable->link }}" title="Мясное ассорти">{{ $item->basketable->title }}</a>
+                            <form method="POST" class="catalog__number count" action="{{ route('basket.update', $item) }}">
+                                @method('PATCH')
+                                @csrf
+                                <button class="count__more count__button" type="button" onclick="this.nextElementSibling.stepUp();this.parentElement.submit()">+</button>
+                                <input class="count__number" type="number" value="{{ $item->quantity }}" name="quantity" min="0" max="100" readonly="">
+                                <button class="count__less count__button" type="button" onclick="this.previousElementSibling.stepDown();this.parentElement.submit()">-</button>
+                            </form>
                         </div>
                         <span class="catalog__price">{{ $item->price }} руб.</span>
                     </div>

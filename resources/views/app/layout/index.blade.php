@@ -67,7 +67,7 @@
                 <svg class="header__order-svg header__order-svg-hover" width="72" height="67">
                     <use xlink:href="/img/sprite_auto.svg#icon-order-opened"></use>
                 </svg>
-                <div class="header__order-text">Ваш заказ <span>0 руб.</span></div>
+                <div class="header__order-text">Ваш заказ <span>{{ app(\App\Repositories\BasketRepository::class)->getTotalPrice() }} руб.</span></div>
             </a>
         </div>
     </div>

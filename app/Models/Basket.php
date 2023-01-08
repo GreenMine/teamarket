@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  *
  * @property int $id
- * @property Collection<BasketItem> $items
  */
 class Basket extends Model implements BasketInterface
 {

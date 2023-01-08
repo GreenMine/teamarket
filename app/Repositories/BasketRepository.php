@@ -70,10 +70,15 @@ class BasketRepository extends CoreRepository {
 		$this->basket->items->add($item);
 	}
 	
-	public function get(int $id) : BasketItemInterface|null {
+	public function get(int $id) : BasketItem {
 		return $this->basket->items
 				->where('id', $id)
 				->first();
+	}
+	
+	public function update(int $id, array $data) {
+		return $this->get($id)
+					->update($data);
 	}
 	
 	public function remove(int $id) : bool {
