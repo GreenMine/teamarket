@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
+use App\Interfaces\Basketable;
 use App\Interfaces\BasketItemInterface;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
  *
  * @property int $id
- * @property Basket $basket
+ * @property Basketable $basketable
+ * @property int $quantity
+ * @property int $price
  */
 class BasketItem extends Model implements BasketItemInterface
 {
@@ -17,7 +21,7 @@ class BasketItem extends Model implements BasketItemInterface
 		return $this->morphTo();
 	}
 	
-	public function setQuantity(int $quantity) {//FIXME: attribute
+	public function setQuantity(int $quantity) {//FIXME: delete
 		if ($quantity > 0) {
 			$this->quantity = $quantity;
 			$this->save();
@@ -26,7 +30,9 @@ class BasketItem extends Model implements BasketItemInterface
 		}
 	}
 	
-	public function getPrice() {//FIXME: attribute
-		return $this->quantity * $this->basketable->getPrice();
+	public function price() : Attribute {
+		return Attribute::make(
+			get: fn() => $this->quantity * $this->basketable->getPrice()
+		);
 	}
 }

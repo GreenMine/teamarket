@@ -16,7 +16,8 @@ class BasketController extends Controller
 	
 	public function index() {
 		$items = $this->basketRepository->getList();
-		return view('app.basket')->with('items', $items);
+		$totalPrice = $this->basketRepository->getTotalPrice();
+		return view('app.basket', ['totalPrice' => $totalPrice])->with('items', $items);
 	}
 	
 	public function add(AddRequest $request, Product $product) {

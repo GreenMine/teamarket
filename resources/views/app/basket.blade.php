@@ -2,6 +2,7 @@
 @section('content')
     <h1 class="title"><span>— Ваш заказ —</span><span>— Оформление заказа —</span></h1>
     <div class="catalog catalog--order container">
+        @php /** @var \App\Models\BasketItem $item */ @endphp
         @foreach($items as $item)
             <div class="catalog__item-order">
                 <div class="catalog__item">
@@ -13,7 +14,7 @@
                                 <button class="count__less count__button" type="button" onclick="this.previousElementSibling.stepDown()">-</button>
                             </div>
                         </div>
-                        <span class="catalog__price">{{ $item->getPrice() }} руб.</span>
+                        <span class="catalog__price">{{ $item->price }} руб.</span>
                     </div>
 
                 </div>
@@ -29,8 +30,8 @@
             </div>
         @endforeach
         <div class="catalog__final">
-            <span class="catalog__final-price">Итого: 700 руб.</span>
-            <button class="catalog__final-button" type="button">Перейти к оформлению</button>
+            <span class="catalog__final-price">Итого: {{ $totalPrice }} руб.</span>
+            <button class="catalog__final-button" type="button" disabled>Перейти к оформлению</button>
         </div>
     </div>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Interfaces;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 interface BasketItemInterface
@@ -10,5 +11,5 @@ interface BasketItemInterface
 
     public function setQuantity(int $quantity);
 
-    public function getPrice();
+    public function price() : Attribute;
 }

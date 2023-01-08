@@ -23,8 +23,7 @@ class BasketRepository extends CoreRepository {
 		return Basket::class;
 	}
 	
-	public static function getCurrent(): BasketInterface
-	{
+	public static function getCurrent(): BasketInterface {
 		$basket = Basket::find(session(static::BASKET_SESSION_KEY));
 		
 		if (!$basket) {
@@ -36,8 +35,7 @@ class BasketRepository extends CoreRepository {
 		return $basket;
 	}
 	
-	public static function getNew(): BasketInterface
-	{
+	public static function getNew(): BasketInterface {
 		session()->forget(static::BASKET_SESSION_KEY);
 		return static::getCurrent();
 	}
@@ -46,8 +44,7 @@ class BasketRepository extends CoreRepository {
 		return $this->basket->items;
 	}
 	
-	public function add(Basketable $basketable, int $quantity)
-	{
+	public function add(Basketable $basketable, int $quantity) {
 		/** @var BasketItem $item */
 		foreach ($this->basket->items as $item) {
 			$currentBasketable = $item->basketable;
@@ -70,7 +67,7 @@ class BasketRepository extends CoreRepository {
 		$item->basketable_id = $basketable->getKey();
 		$item->save();
 		
-		unset($this->basket->items);
+		$this->basket->items->add($item);
 	}
 	
 	public function get(int $id) : BasketItemInterface|null {
@@ -79,7 +76,7 @@ class BasketRepository extends CoreRepository {
 				->first();
 	}
 	
-	public function remove(int $id) {
+	public function remove(int $id) : bool {
 		return $this->get($id)->delete();
 	}
 	
@@ -87,22 +84,20 @@ class BasketRepository extends CoreRepository {
 		return $this->get($id) instanceof BasketItemInterface;
 	}
 	
-	public function getTotalPrice()
-	{
+	public function getTotalPrice() : int {
+		/** @var BasketItem $i */
 		return $this->basket->items
-				->map(fn($i) => $i->getPrice())
+				->map(fn($i) => $i->price)
 				->sum();
 	}
 	
-	public function getTotalAmount(): int
-	{
+	public function getTotalAmount() : int {
 		return $this->basket->items
 			->map(fn($i) => $i->quantity)
 			->sum();
 	}
 	
-	public function isEmpty(): bool
-	{
+	public function isEmpty() : bool {
 		return $this->getTotalAmount() == 0;
 	}
 }

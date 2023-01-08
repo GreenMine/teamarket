@@ -18,19 +18,7 @@ class DatabaseSeeder extends Seeder
     {
          \App\Models\User::factory(10)->create();
 		 
-		 $this->create_root_category();
 		 \App\Models\Shop\Category::factory(10)->create();
 		 \App\Models\Shop\Product::factory(100)->create();
     }
-	
-	const ROOT_CATEGORY_NAME = 'Главная категория';
-	private function create_root_category() {
-		\App\Models\Shop\Category::create([
-			'relation_id' => Relation::create([
-				'parent_id' => Category::ROOT_PARENT_ID,
-				'slug' => Str::slug(self::ROOT_CATEGORY_NAME)
-			])->id,
-			'title' => self::ROOT_CATEGORY_NAME
-		 ]);
-	}
 }
