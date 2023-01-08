@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Shop\Relation;
 use App\Models\Shop\Category;
+use App\Models\Shop\Relation;
 
 class RelationRepository extends CoreRepository
 {

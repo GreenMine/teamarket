@@ -2,7 +2,6 @@
 
 namespace App\Rules;
 
-use App\Models\Basket;
 use App\Repositories\BasketRepository;
 use Illuminate\Contracts\Validation\Rule;
 

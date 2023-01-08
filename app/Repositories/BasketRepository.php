@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
+use App\Interfaces\Basketable;
 use App\Interfaces\BasketInterface;
+use App\Interfaces\BasketItemInterface;
 use App\Models\Basket;
 use App\Models\BasketItem;
-use App\Interfaces\Basketable;
-use App\Interfaces\BasketItemInterface;
 use Illuminate\Support\Facades\Session;
 
 class BasketRepository extends CoreRepository {
